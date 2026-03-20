@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Debug</title>
+</head>
+<body>
+    <h1>Currency Formatting Debug</h1>
+    <div id="output"></div>
+    
+    <script src="js/utils.js"></script>
+    <script>
+        const output = document.getElementById('output');
+        
+        // Test the formatCurrency function directly
+        output.innerHTML = '<h2>Testing formatCurrency function:</h2>';
+        
+        const testPrices = [331.17, 414.17, 1078.17, 248.17];
+        
+        testPrices.forEach(price => {
+            try {
+                const formatted = formatCurrency(price);
+                output.innerHTML += `<p style="font-size: 20px; color: green;">${price} → ${formatted}</p>`;
+            } catch (error) {
+                output.innerHTML += `<p style="color: red;">Error formatting ${price}: ${error.message}</p>`;
+            }
+        });
+        
+        // Test if formatCurrency function exists
+        if (typeof formatCurrency === 'function') {
+            output.innerHTML += '<p style="color: blue;">✅ formatCurrency function is loaded</p>';
+        } else {
+            output.innerHTML += '<p style="color: red;">❌ formatCurrency function NOT found</p>';
+        }
+    </script>
+</body>
+</html>

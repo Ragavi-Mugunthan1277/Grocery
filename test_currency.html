@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Test</title>
+</head>
+<body>
+    <h1>Currency Test</h1>
+    <div id="test-results"></div>
+    
+    <script>
+        // Copy the formatCurrency function from utils.js
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(amount);
+        }
+        
+        // Test the function
+        const testPrices = [331.17, 414.17, 1078.17, 248.17];
+        const results = document.getElementById('test-results');
+        
+        results.innerHTML = '<h2>Currency Formatting Test:</h2>';
+        testPrices.forEach(price => {
+            const formatted = formatCurrency(price);
+            results.innerHTML += `<p>${price} → ${formatted}</p>`;
+        });
+    </script>
+</body>
+</html>

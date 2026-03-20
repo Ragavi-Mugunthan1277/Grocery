@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - GroceryStore</title>
+    <meta name="description" content="View and manage your shopping cart">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">🛒 GroceryStore</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="index.html#categories">Categories</a></li>
+                <li>
+                    <a href="cart.html" class="cart-icon">
+                        🛒 Cart
+                        <span class="cart-count" id="cartCount" style="display:none">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <div class="container">
+            <h1 class="section-title">Shopping Cart</h1>
+            <div class="cart-container">
+                <div id="cartContent">
+                    <div class="loading"><div class="spinner"></div></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="footer-logo">🛒 GroceryStore</p>
+            <p class="footer-copy">&copy; <span id="footerYear"></span> GroceryStore. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>document.getElementById('footerYear').textContent = new Date().getFullYear();</script>
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Cart</title>
+</head>
+<body>
+    <h1>Cart Test</h1>
+    <button onclick="testAddToCart()">Add Item to Cart</button>
+    <button onclick="testGetCart()">Get Cart</button>
+    <button onclick="clearSession()">Clear Session</button>
+    <div id="output"></div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        const apiService = new ApiService();
+        
+        function log(message) {
+            document.getElementById('output').innerHTML += '<p>' + message + '</p>';
+        }
+        
+        async function testAddToCart() {
+            try {
+                log('Adding item to cart...');
+                const result = await apiService.addToCart(1, 2);
+                log('Success: ' + JSON.stringify(result));
+            } catch (error) {
+                log('Error: ' + error.message);
+            }
+        }
+        
+        async function testGetCart() {
+            try {
+                log('Getting cart...');
+                const result = await apiService.getCart();
+                log('Cart contents: ' + JSON.stringify(result));
+            } catch (error) {
+                log('Error: ' + error.message);
+            }
+        }
+        
+        function clearSession() {
+            localStorage.removeItem('grocery_session_id');
+            log('Session cleared');
+        }
+    </script>
+</body>
+</html>
