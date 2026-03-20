@@ -12,7 +12,9 @@ app = Flask(__name__)
 CORS(app, origins=[
     'http://localhost:3000', 'http://127.0.0.1:3000',
     'http://localhost:5500', 'http://127.0.0.1:5500',
-    'http://localhost:8080', 'http://127.0.0.1:8080'
+    'http://localhost:8080', 'http://127.0.0.1:8080',
+    'https://*.github.io',  # GitHub Pages
+    '*'  # Allow all during development - restrict in production
 ])
 
 # Database configuration
@@ -533,4 +535,5 @@ def get_order(order_id):
     return jsonify(order)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=os.environ.get('FLASK_ENV') != 'production')

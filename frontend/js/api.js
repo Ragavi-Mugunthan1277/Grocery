@@ -1,7 +1,11 @@
 // API Service for Grocery Store Application
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000/api'
+    : 'https://YOUR_BACKEND_URL/api'; // Replace with your deployed backend URL
+
 class ApiService {
     constructor() {
-        this.baseURL = 'http://localhost:5000/api';
+        this.baseURL = API_BASE_URL;
         this.sessionId = this.getOrCreateSessionId();
     }
 
